@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity-mappings ptype="MONOLITH" ppkg="Lab2.jpademo" epkg="com.jpamodeler.kart.model" v="5.4.3" rws="_16433915358982" Pws="_16433915358982" cws="_16433915358982" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_16433915358981" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <entity compositePrimaryKeyClass="CustomerPK" abs="false" class="Customer" v="true" jbn="false" xre="false" m="false" rootElement="_16433915358981" id="_16433915402093">
+        <ath>rudyw</ath>
+        <attributes>
+            <basic attribute-type="String" v="true" xvt="" name="firstName" id="_16433915688637">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="lastName" id="_16433915955108">
+                <xwm/>
+                <xm/>
+            </basic>
+            <embedded connected-class-id="_164339189023424" v="true" xvt="" name="address" id="_164339190489027">
+                <xwm/>
+                <xm/>
+            </embedded>
+            <one-to-many orp="false" own="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_16433916166159" v="true" xvt="" name="orders" id="_164339176239815">
+                <xwm/>
+                <xm/>
+                <join-table name="CUST_ORDER">
+                    <join-column name="ORDERID" unique="false" nullable="true" insertable="true" updatable="true"/>
+                    <inverse-join-column name="CUSTID" unique="false" nullable="true" insertable="true" updatable="true"/>
+                </join-table>
+            </one-to-many>
+            <id attribute-type="Long" v="true" xvt="" name="id" id="_16433915402404">
+                <xwm/>
+                <xm/>
+                <generated-value strategy="DEFAULT"/>
+            </id>
+        </attributes>
+        <nq e="false" name="Customer.findAll">
+            <query>Select e from Customer e</query>
+        </nq>
+        <nq e="false" name="Customer.findByFirstName">
+            <query>Select c from Customer c where c.firstName=:firstName</query>
+        </nq>
+        <nq e="false" name="Customer.findByLastName">
+            <query>Select c from Customer c where c.lastName=:lastName</query>
+        </nq>
+    </entity>
+    <entity compositePrimaryKeyClass="ProductOrderPK" abs="false" class="ProductOrder" v="true" xre="false" m="false" rootElement="_16433915358981" id="_16433916166159">
+        <ath>rudyw</ath>
+        <attributes>
+            <basic attribute-type="String" v="true" name="amount" id="_164339181701319"/>
+            <many-to-many own="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_164339178947416" v="true" name="products" id="_164339186108921">
+                <xwm/>
+                <xm/>
+                <join-table name="PRODUCTORDER_PRODUCT">
+                    <join-column name="PRODUCTID" unique="false" nullable="true" insertable="true" updatable="true"/>
+                    <inverse-join-column name="ORDERID" unique="false" nullable="true" insertable="true" updatable="true"/>
+                </join-table>
+            </many-to-many>
+            <id attribute-type="Long" v="true" name="id" id="_164339161661710">
+                <generated-value strategy="DEFAULT"/>
+            </id>
+        </attributes>
+        <nq e="false" name="ProductOrder.findAll">
+            <query>Select e from ProductOrder e</query>
+        </nq>
+        <nq e="false" name="ProductOrder.findByAmount">
+            <query>Select p from ProductOrder p where p.amount=:amount</query>
+        </nq>
+        <table name="PRODUCT_ORDER"/>
+    </entity>
+    <entity compositePrimaryKeyClass="ProductPK" abs="false" class="Product" v="true" xre="false" m="false" rootElement="_16433915358981" id="_164339178947416">
+        <ath>rudyw</ath>
+        <attributes>
+            <basic attribute-type="String" v="true" name="description" id="_164339187759422"/>
+            <basic attribute-type="String" v="true" name="retailPrice" id="_164339188390723"/>
+            <id attribute-type="Long" v="true" name="id" id="_164339178947617">
+                <generated-value strategy="DEFAULT"/>
+            </id>
+        </attributes>
+        <nq e="false" name="Product.findAll">
+            <query>Select e from Product e</query>
+        </nq>
+        <nq e="false" name="Product.findByDescription">
+            <query>Select p from Product p where p.description=:description</query>
+        </nq>
+        <nq e="false" name="Product.findByRetailPrice">
+            <query>Select p from Product p where p.retailPrice=:retailPrice</query>
+        </nq>
+    </entity>
+    <embeddable abs="false" class="Address" v="true" xre="false" m="false" rootElement="_16433915358981" id="_164339189023424">
+        <ath>rudyw</ath>
+        <attributes>
+            <basic attribute-type="String" v="true" name="street" id="_164339192272228">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" name="city" id="_164339192306829">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" name="state" id="_164339192332130">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" name="country" id="_164339192355131">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" name="zipcode" id="_164339193867332"/>
+        </attributes>
+    </embeddable>
+    <c>
+        <db u="jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=CONVERT_TO_NULL" n="root" p="password" d="com.mysql.cj.jdbc.Driver"/>
+    </c>
+    <wsl>
+        <ws n="Main" id="_16433915358982">
+            <i ref="_164339189023424" x="269" y="17"/>
+            <i ref="_16433916166159" x="209" y="275"/>
+            <i ref="_16433915402093" x="53" y="55"/>
+            <i ref="_164339178947416" x="388" y="440"/>
+        </ws>
+    </wsl>
+</entity-mappings>
