@@ -21,7 +21,7 @@ public class Main {
     private static String dbNameArg = "csd211testdb";
     private static Connection con = null;
     private static String TABLE_NAME = "CD";
-    private static int year = "2022"
+    private static int year = "2022";
 
     /**
      * @param args the command line arguments

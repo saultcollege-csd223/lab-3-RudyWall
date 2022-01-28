@@ -39,11 +39,14 @@
             <query>Select c from Customer c where c.lastName=:lastName</query>
         </nq>
     </entity>
-    <entity compositePrimaryKeyClass="ProductOrderPK" abs="false" class="ProductOrder" v="true" xre="false" m="false" rootElement="_16433915358981" id="_16433916166159">
+    <entity compositePrimaryKeyClass="ProductOrderPK" abs="false" class="ProductOrder" v="true" jbn="false" xre="false" m="false" rootElement="_16433915358981" id="_16433916166159">
         <ath>rudyw</ath>
         <attributes>
-            <basic attribute-type="String" v="true" name="amount" id="_164339181701319"/>
-            <many-to-many own="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_164339178947416" v="true" name="products" id="_164339186108921">
+            <basic attribute-type="String" v="true" xvt="" name="amount" id="_164339181701319">
+                <xwm/>
+                <xm/>
+            </basic>
+            <many-to-many own="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_164339178947416" v="true" xvt="" name="products" id="_164339186108921">
                 <xwm/>
                 <xm/>
                 <join-table name="PRODUCTORDER_PRODUCT">
@@ -51,7 +54,9 @@
                     <inverse-join-column name="ORDERID" unique="false" nullable="true" insertable="true" updatable="true"/>
                 </join-table>
             </many-to-many>
-            <id attribute-type="Long" v="true" name="id" id="_164339161661710">
+            <id attribute-type="Long" v="true" xvt="" name="id" id="_164339161661710">
+                <xwm/>
+                <xm/>
                 <generated-value strategy="DEFAULT"/>
             </id>
         </attributes>
@@ -63,12 +68,20 @@
         </nq>
         <table name="PRODUCT_ORDER"/>
     </entity>
-    <entity compositePrimaryKeyClass="ProductPK" abs="false" class="Product" v="true" xre="false" m="false" rootElement="_16433915358981" id="_164339178947416">
+    <entity compositePrimaryKeyClass="ProductPK" abs="false" class="Product" v="true" jbn="false" xre="false" m="false" rootElement="_16433915358981" id="_164339178947416">
         <ath>rudyw</ath>
         <attributes>
-            <basic attribute-type="String" v="true" name="description" id="_164339187759422"/>
-            <basic attribute-type="String" v="true" name="retailPrice" id="_164339188390723"/>
-            <id attribute-type="Long" v="true" name="id" id="_164339178947617">
+            <basic attribute-type="String" v="true" xvt="" name="description" id="_164339187759422">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="retailPrice" id="_164339188390723">
+                <xwm/>
+                <xm/>
+            </basic>
+            <id attribute-type="Long" v="true" xvt="" name="id" id="_164339178947617">
+                <xwm/>
+                <xm/>
                 <generated-value strategy="DEFAULT"/>
             </id>
         </attributes>
@@ -82,26 +95,29 @@
             <query>Select p from Product p where p.retailPrice=:retailPrice</query>
         </nq>
     </entity>
-    <embeddable abs="false" class="Address" v="true" xre="false" m="false" rootElement="_16433915358981" id="_164339189023424">
+    <embeddable abs="false" class="Address" v="true" jbn="false" xre="false" m="false" rootElement="_16433915358981" id="_164339189023424">
         <ath>rudyw</ath>
         <attributes>
-            <basic attribute-type="String" v="true" name="street" id="_164339192272228">
+            <basic attribute-type="String" v="true" xvt="" name="street" id="_164339192272228">
                 <xwm/>
                 <xm/>
             </basic>
-            <basic attribute-type="String" v="true" name="city" id="_164339192306829">
+            <basic attribute-type="String" v="true" xvt="" name="city" id="_164339192306829">
                 <xwm/>
                 <xm/>
             </basic>
-            <basic attribute-type="String" v="true" name="state" id="_164339192332130">
+            <basic attribute-type="String" v="true" xvt="" name="state" id="_164339192332130">
                 <xwm/>
                 <xm/>
             </basic>
-            <basic attribute-type="String" v="true" name="country" id="_164339192355131">
+            <basic attribute-type="String" v="true" xvt="" name="country" id="_164339192355131">
                 <xwm/>
                 <xm/>
             </basic>
-            <basic attribute-type="String" v="true" name="zipcode" id="_164339193867332"/>
+            <basic attribute-type="String" v="true" xvt="" name="zipcode" id="_164339193867332">
+                <xwm/>
+                <xm/>
+            </basic>
         </attributes>
     </embeddable>
     <c>
