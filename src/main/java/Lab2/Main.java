@@ -21,7 +21,7 @@ public class Main {
     private static String dbNameArg = "csd211testdb";
     private static Connection con = null;
     private static String TABLE_NAME = "CD";
-    private static int year = "2022";
+    private static int year = 2022;
 
     /**
      * @param args the command line arguments
@@ -102,13 +102,13 @@ public class Main {
             stmt = con.createStatement();
 
             stmt.executeUpdate("insert into " + TABLE_NAME + " "
-                    + "values(1, '5150', 'Van Halen')");
+                    + "values(1, '5150', 'Van Halen', 2022)");
             stmt.executeUpdate("insert into " + TABLE_NAME + " "
-                    + "values(2, '1984', 'Van Halen')");
+                    + "values(2, '1984', 'Van Halen', 2020)");
             stmt.executeUpdate("insert into " + TABLE_NAME + " "
-                    + "values(3, 'Back in Black', 'AC/DC')");
+                    + "values(3, 'Back in Black', 'AC/DC', 2018)");
             stmt.executeUpdate("insert into " + TABLE_NAME + " "
-                    + "values(4, 'Full Bluntal Nugity', 'Ted Nugent')");
+                    + "values(4, 'Full Bluntal Nugity', 'Ted Nugent', 1980)");
 
         } finally {
             stmt.close();
