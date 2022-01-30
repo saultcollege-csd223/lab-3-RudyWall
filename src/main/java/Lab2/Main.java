@@ -18,7 +18,7 @@ public class Main {
 
     private static String USERNAME = "root";
     private static String IP = "localhost";
-    private static String PASSWORD = "itstudies12345";
+    private static String PASSWORD = "password";
     private static String dbNameArg = "csd211testdb";
     private static Connection con = null;
     private static String TABLE_NAME = "CD";
