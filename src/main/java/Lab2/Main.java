@@ -1,4 +1,5 @@
-package ____w22.lecture2.jdbc;
+package Lab2
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
