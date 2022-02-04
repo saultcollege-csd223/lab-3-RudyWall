@@ -2,14 +2,14 @@
 <persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
   <persistence-unit name="DEFAULT_PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>Lab2.jpademo.com.jpamodeler.kart.model.Customer</class>
-    <class>Lab2.jpademo.com.jpamodeler.kart.model.ProductOrder</class>
-    <class>Lab2.jpademo.com.jpamodeler.kart.model.Product</class>
+    <class>Lab2_part2.entities.Person</class>
+    <class>Lab2_part2.entities.Employee</class>
+    <class>Lab2_part2.entities.Customer</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
-      <property name="javax.persistence.jdbc.password" value="app"/>
-      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-      <property name="javax.persistence.jdbc.user" value="app"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/lab2_part2?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+      <property name="javax.persistence.jdbc.password" value="password"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>

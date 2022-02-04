@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity-mappings ptype="MONOLITH" ppkg="Lab2_part2.entities" epkg="entities" v="5.4.3" rws="_164392179612813" Pws="_164392179612813" cws="_164392179612813" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_164392179612812" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <entity compositePrimaryKeyClass="PersonPK" abs="false" class="Person" v="true" jbn="false" xre="false" m="false" rootElement="_164392179612812" id="_164392180472714">
+        <ath>rudyw</ath>
+        <attributes>
+            <basic attribute-type="String" v="true" xvt="" name="firstname" id="_164392182983717">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="lastname" id="_164392183141218">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="SIN" id="_164392183184019">
+                <xwm/>
+                <xm/>
+            </basic>
+            <id attribute-type="Long" v="true" xvt="" name="id" id="_164392180473515">
+                <xwm/>
+                <xm/>
+                <generated-value strategy="IDENTITY"/>
+            </id>
+        </attributes>
+        <nq e="false" name="Person.findAll">
+            <query>Select e from Person e</query>
+        </nq>
+        <nq e="false" name="Person.findByFirstname">
+            <query>Select p from Person p where p.firstname=:firstname</query>
+        </nq>
+        <nq e="false" name="Person.findByLastname">
+            <query>Select p from Person p where p.lastname=:lastname</query>
+        </nq>
+        <nq e="false" name="Person.findBySIN">
+            <query>Select p from Person p where p.SIN=:SIN</query>
+        </nq>
+    </entity>
+    <entity compositePrimaryKeyClass="EmployeePK" abs="false" class="Employee" superclassId="_164392180472714" v="true" jbn="false" xre="false" m="false" rootElement="_164392179612812" id="_164392185009920">
+        <ath>rudyw</ath>
+        <attributes>
+            <basic attribute-type="String" v="true" xvt="" name="title" id="_164392188897026">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="salary" pname="salary" id="_164392189059427">
+                <xwm/>
+                <xm/>
+            </basic>
+        </attributes>
+        <nq e="false" name="Employee.findAll">
+            <query>Select e from Employee e</query>
+        </nq>
+        <nq e="false" name="Employee.findByTitle">
+            <query>Select e from Employee e where e.title=:title</query>
+        </nq>
+        <nq e="false" name="Employee.findBySalary">
+            <query>Select e from Employee e where e.salary=:salary</query>
+        </nq>
+    </entity>
+    <entity compositePrimaryKeyClass="CustomerPK" abs="false" class="Customer" superclassId="_164392180472714" v="true" jbn="false" xre="false" m="false" rootElement="_164392179612812" id="_164392185228223">
+        <ath>rudyw</ath>
+        <attributes>
+            <basic attribute-type="String" v="true" xvt="" name="credit_card_number" id="_164392193238529">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="cust_id" id="_164392193280830">
+                <xwm/>
+                <xm/>
+            </basic>
+        </attributes>
+        <nq e="false" name="Customer.findAll">
+            <query>Select e from Customer e</query>
+        </nq>
+        <nq e="false" name="Customer.findByCredit_card_number">
+            <query>Select c from Customer c where c.credit_card_number=:credit_card_number</query>
+        </nq>
+        <nq e="false" name="Customer.findByCust_id">
+            <query>Select c from Customer c where c.cust_id=:cust_id</query>
+        </nq>
+    </entity>
+    <wsl>
+        <ws n="Main" id="_164392179612813">
+            <i ref="_164392185228223" x="416" y="200"/>
+            <i ref="_164392180472714" x="228" y="20"/>
+            <i ref="_164392185009920" x="58" y="190"/>
+        </ws>
+    </wsl>
+</entity-mappings>
