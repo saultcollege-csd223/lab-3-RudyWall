@@ -4,50 +4,84 @@
 <head>
     <meta charset="utf-8">
     <title class="title">Getting Started with Three.js</title>
-    <style>
-        h1 {
-            text-align: center;
-            background-color: rgb(82, 82, 82);
-            outline: 5px solid black;
-            color: white;
-            font-size: 45px;
-            font-family: monospace;
-        }
 
-        body {
-            margin: 0;
-            background-color: rgb(59, 59, 59);
-        }
+    
+    <link rel="stylesheet" href="styles/default.min.css">
+    <script src="highlight.js"></script>
 
-        h2 {
-            background-color: rgb(82, 82, 82);
-            color: white;
-        }
-
-        p {
-            color: white;
-        }
-
-        #divID {
-            text-align: center;
-        }
-
-        a:link {
-            color: rgb(7, 100, 187);
-        }
-
-        a:visited {
-            color: rgb(140, 86, 202)
-        }
-
-        a:hover {
-            color: rgb(0, 153, 255)
-        }
-    </style>
+	<link rel="stylesheet" href="styles.css">
+    <nav class="topnav">
+        <a class="active" href="index.html">Start Page</a>
+        <a href="square.html">Square One</a>
+        <a href="advanced.html">Beyond Square One</a>
+        <a href="extra.html">Extra</a>
+      </nav>
+      <script>hljs.initHighlightingOnLoad()</script>
 </head>
 
 <body>
+    <pre><code class="javascript">
+        <script src="js/three.js"></script>
+	<script>
+		const scene = new THREE.Scene();
+		const camera = new THREE.PerspectiveCamera(45, window.innerWidth / 0.9 / window.innerHeight, 0.5, 1000);
+		const canvas = document.getElementById("canvasID");
+		const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
 
+		renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+		document.getElementById('divID').appendChild(renderer.domElement);
+
+		const geometry = new THREE.BoxGeometry();
+		const edges = new THREE.EdgesGeometry(geometry);
+		const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: "black" }));
+		const material = new THREE.MeshStandardMaterial({ color: 'red' });
+		const cube = new THREE.Mesh(geometry, material, line);
+		cube.castShadow = true;
+		cube.receiveShadow = false;
+
+
+
+
+		renderer.shadowMap.enabled = true;
+
+		const light = new THREE.SpotLight(0xff0000);
+		light.position.set(1, 2.5, 4);
+		light.castShadow = true;
+		light.shadow.mapSize.width = 1000;
+		light.shadow.mapSize.height = 1000;
+		light.shadow.camera.near = 1;
+		light.shadow.camera.far = 10;
+		light.shadow.camera.fov = 30;
+
+		const light2 = new THREE.SpotLight(0xff0000);
+		light2.position.set(-2, -2.5, 0);
+		light2.castShadow = true;
+		light2.shadow.mapSize.width = 1000;
+		light2.shadow.mapSize.height = 1000;
+		light2.shadow.camera.near = 1;
+		light2.shadow.camera.far = 10;
+		light2.shadow.camera.fov = 30;
+		light2.intensity = 0.5;
+
+		scene.add(light);
+		scene.add(light2);
+		scene.add(line);
+		scene.add(cube);
+		scene.background = null;
+
+		camera.position.z = 2.24;
+		function animate() {
+			cube.rotation.x += 0.008;
+			line.rotation.x += 0.008;
+			cube.rotation.y += 0.008;
+			line.rotation.y += 0.008;
+			requestAnimationFrame(animate);
+			renderer.render(scene, camera);
+		}
+		animate();
+
+	</script>
+    </code></pre>
 </body>
 
 </html>
