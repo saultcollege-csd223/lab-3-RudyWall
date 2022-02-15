@@ -3,25 +3,60 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Getting Started with Three.js</title>
-	<style>
-		body {
-			margin: 0;
-		}
+	<title class="title">Getting Started with Three.js</title>
 
+
+	<style>
 		h1 {
 			text-align: center;
+			background-color: rgb(82, 82, 82);
+			outline: 5px solid black;
+			color: white;
+			font-size: 45px;
+			font-family: monospace;
+		}
+
+		body {
+			margin: 0;
+			background-color: rgb(59, 59, 59);
+		}
+
+		h2 {
+			background-color: rgb(82, 82, 82);
+			color: white;
+		}
+
+		p {
+			color: white;
 		}
 
 		#divID {
 			text-align: center;
 		}
+
+		a:link {
+			color: rgb(7, 100, 187);
+		}
+
+		a:visited {
+			color: rgb(140, 86, 202)
+		}
+
+		a:hover {
+			color: rgb(0, 153, 255)
+		}
 	</style>
-	<h1>Getting Started with Three.js</h1>
+	<div>
+
+	</div>
 
 </head>
 
 <body>
+	<header>
+		<h1>Getting Started with Three.js</h1>
+
+	</header>
 	<div id="divID"><canvas id="canvasID"></canvas>
 	</div>
 	<script src="js/three.js"></script>
@@ -29,7 +64,7 @@
 		const scene = new THREE.Scene();
 		const camera = new THREE.PerspectiveCamera(45, window.innerWidth / 0.9 / window.innerHeight, 0.5, 1000);
 		const canvas = document.getElementById("canvasID");
-		const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true});
+		const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
 
 		renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
 		document.getElementById('divID').appendChild(renderer.domElement);
@@ -39,10 +74,10 @@
 		const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: "black" }));
 		const material = new THREE.MeshStandardMaterial({ color: 'red' });
 		const cube = new THREE.Mesh(geometry, material, line);
-		cube.castShadow=true;
-		cube.receiveShadow= false;
+		cube.castShadow = true;
+		cube.receiveShadow = false;
 
-		
+
 
 
 		renderer.shadowMap.enabled = true;
@@ -50,22 +85,22 @@
 		const light = new THREE.SpotLight(0xff0000);
 		light.position.set(1, 2.5, 4);
 		light.castShadow = true;
-		light.shadow.mapSize.width=1000;
-		light.shadow.mapSize.height=1000;
-		light.shadow.camera.near=1;
+		light.shadow.mapSize.width = 1000;
+		light.shadow.mapSize.height = 1000;
+		light.shadow.camera.near = 1;
 		light.shadow.camera.far = 10;
-		light.shadow.camera.fov=30;
+		light.shadow.camera.fov = 30;
 
 		const light2 = new THREE.SpotLight(0xff0000);
 		light2.position.set(-2, -2.5, 0);
 		light2.castShadow = true;
-		light2.shadow.mapSize.width=1000;
-		light2.shadow.mapSize.height=1000;
-		light2.shadow.camera.near=1;
+		light2.shadow.mapSize.width = 1000;
+		light2.shadow.mapSize.height = 1000;
+		light2.shadow.camera.near = 1;
 		light2.shadow.camera.far = 10;
-		light2.shadow.camera.fov=30;
+		light2.shadow.camera.fov = 30;
 		light2.intensity = 0.5;
-		
+
 		scene.add(light);
 		scene.add(light2);
 		scene.add(line);
@@ -84,10 +119,36 @@
 		animate();
 
 	</script>
-	<p>This library is used to create 3D shapes and images on a webpage. This library is similar to WebGL. Three.js does
-		use WebGL to make the 3D content but using WebGL alone usually leads to lots of code from the programmer where
-		Three.js handles all scenes, lights, shadows, material, texture and 3D math. Using Three.js makes it better for
-		programmers trying to achieve 3D content with less code.</p>
+
+	<p style="font-size: 20px; text-align: center;">Like this fancy cube? <a href="square.html">Learn to make it!</a>
+	</p>
+
+	<div>
+		<h2>Why use Three.js:</h2>
+		<p>Three.js is perfect for smooth 3D and 2D animations. It can also be used for interactive graphics.
+			Using Three.js avoids using multi-dimentional objects and if you know another 3D library this library will
+			seem familiar.
+			Three.js uses WebGL to make the 3D content and handles all scenes, lights, shadows, material, texture and 3D
+			math.
+		</p>
+		
+		<h2>Similar Libraries:</h2>
+	</div>
+
+		<span style="display: flex;">
+			<p>
+				WebGL alone requires more code to achieve the same thing Three.js does.
+				Some other libraries that are similar are Unity for higher quality, BabylonJS for quicker functions and
+				AngularJS for static documents.
+			</p>
+			<span style="float:left;">
+				<a href="https://www.khronos.org/webgl/"><img src="Images/WebGL.png" title="WebGL" style="height:50px;"></a>
+				<a href="https://unity.com/pages/unity-pro-buy-now?gclid=Cj0KCQiAmKiQBhClARIsAKtSj-kynbv6s5AlJR66fykU0J89cjIC0l9GfMPJXJmzpR5AmPfhTBKujjcaAu3LEALw_wcB&gclsrc=aw.ds"><img src="Images/unity.png" title="Unity" style="height:50px; "></a>
+				<a href="https://www.babylonjs.com/"><img src="Images/Babylon.png" title="Babylon" style="height:50px; "></a>
+				<a href="https://angular.io/"><img src="Images/angular.png" title="Angular" style="height:50px; "></a>
+			</span>
+		</span>
+
 
 
 </body>
