@@ -1,3 +1,4 @@
+
 h1 {
     text-align: center;
     background-color: rgb(82, 82, 82);
@@ -16,9 +17,13 @@ h2 {
     background-color: rgb(82, 82, 82);
     color: white;
 }
+h4{
+    color:white;
+}
 
 p {
     color: white;
+    
 }
 
 #divID {
@@ -51,3 +56,4 @@ a:hover {
   width: 15%;
   background: #933737;
 }
+
