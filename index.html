@@ -40,9 +40,6 @@
 		cube.castShadow = true;
 		cube.receiveShadow = false;
 
-
-
-
 		renderer.shadowMap.enabled = true;
 
 		const light = new THREE.SpotLight(0xff0000);
@@ -68,7 +65,6 @@
 		scene.add(light2);
 		scene.add(line);
 		scene.add(cube);
-		scene.background = null;
 
 		camera.position.z = 2.24;
 		function animate() {
