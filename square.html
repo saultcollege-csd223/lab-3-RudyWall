@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<title class="title">Getting Started with Three.js</title>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="styles/a11y-dark.min.css">
+    <script src="highlight.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <nav class="topnav">
+        <a class="active" href="index.html">Start Page</a>
+        <a href="square.html">Square One</a>
+        <a href="advanced.html">Beyond Square One</a>
+        <a href="extra.html">Extra</a>
+    </nav>
+    <script>hljs.initHighlightingOnLoad()</script>
+</head>
+
+<body>
+    <header>
+        <h1>Square One</h1>
+    </header>
+    <div>
+        <h2>Setting Up three.js</h2>
+        <p>First thing is first we need to set up three.js...</p>
+        <p>Copy the contents of <a href="https://threejs.org/build/three.js"> three.js</a> using ctrl + A to select
+            all then ctrl
+            + C to copy.</p>
+        <p>Now in Visual Studio Code (or your IDE of choice) in your html location create the folder js with the
+            file three.js inside
+            it like this:</p>
+        <img src="Images/step1.jpg">
+        <p>Finally open the new three.js file. Do ctrl + V and paste all the code within and save.</p>
+        <p>Three.js is now in your site folder but now we need to connect it to your html...</p>
+        <p>Within your html file add a style tag and edit the body margin to 0 like this: </p>
+        <pre><code>
+&lt;head&gt;
+    &lt;style&gt; 
+        body {
+            margin: 0 
+        } 
+    &lt;/style&gt;
+&lt;/head&gt;    
+            </code></pre>
+        <p>Now in the body add a script tag with the src to three.js like this:</p>
+        <pre><code>
+&lt;body&gt;
+    &lt;script src="js/three.js"&gt; &lt;/script&gt;
+&lt;/body&gt;
+    </code></pre>
+        <p>That's it and now your html file is set up with Three.js! The html code should now look like this:</p>
+        <pre><code>example.html
+            
+&lt;!doctype html&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;title&gt;Cube One Example&lt;/title&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;style&gt; 
+                body { 
+                    margin: 0; 
+                } 
+            &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;script src="js/three.js"&gt; &lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+                    </code></pre>
+    </div>
+
+    <div>
+        <h2>Setting the scene</h2>
+        <p>Now that we have Three.js setup we can begin to make our cube. First we need to set up where our cube is on
+            the page using a scene by adding the following script to the body:</p>
+        <pre><code>
+&lt;body&gt;
+    &lt;script src="js/three.js"&gt; &lt;/script&gt;
+    &lt;script&gt;
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+        const renderer = new THREE.WebGLRenderer();
+
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        document.body.appendChild( renderer.domElement );
+    &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+        <h4><mark>THREE.Scene()</mark> is the enviornment the cube will be in. Think of it like a theater stage.
+            You can add or remove objects and lights to the stage if you wanted.</h4>
+        <h4><mark>THREE.PerspectiveCamera()</mark> is the perspective that we're looking at the cube. Think of it like
+            a regular camera you can point in any direction of the stage. You can adjust the perspective of the camera
+            by changing the numbers:
+        </h4>
+        <pre><code>PerspectiveCamera(fov: Number, aspect: Number, near: Number, far: Number</code></pre>
+        <h4><mark>THREE.WebGLRenderer()</mark> is what puts everything together. Think of it like a live stream
+            on the stage and it's on your favorite streaming platform. To change the size or run at a lower resolution
+            you can edit setSize.</h4>
+        <pre><code>&lt;script src="js/three.js"&gt; &lt;/script&gt;
+&lt;script&gt;
+    //Normal resolution
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    //Quarter Size
+    renderer.setSize( window.innerWidth/2, window.innerHeight/2 );
+    //Half resolution
+    renderer.setSize( window.innerWidth/2, window.innerHeight/2, false );
+&lt;/script&gt;
+</code></pre>
+        <p>Now we have the scene, camera and renderer ready for our 3D content.</p>
+    </div>
+    <div>
+        <h2>Adding to the Scene</h2>
+        <p> With the scene, camera and renderer set we can add the geometry and material. Then depending on the geometry
+            and material set we create an object. This is how we make our cube object:</p>
+        <pre><code>&lt;body&gt;
+    &lt;script src="js/three.js"&gt; &lt;/script&gt;
+    &lt;script&gt;
+        . . .
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshStandardMaterial( { color: 'red' } );
+                                   
+        const cube = new THREE.Mesh( geometry, material );
+        scene.add( cube );
+            
+        camera.position.z = 5;
+        //changing this value will zppm the camera in or out
+                    
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        <h4><mark>THREE.BoxGeometry()</mark> is used to generate the shape of your object.
+            For other shapes you change the geometry. Other shape examples:</h4>
+        <pre><code>&lt;script src="js/three.js"&gt; &lt;/script&gt;
+&lt;script&gt;
+    const Circle     =  new THREE.CircleGeometry()
+    const Cone       =  new THREE.ConeGeometry()
+    const Cylinder   =  new THREE.CylinderGeometry()
+    const Octahedron =  new THREE.OctahedronGeometry()
+&lt;/script&gt;</code></pre>
+        <h4><mark>THREE.MeshStandardMaterial()</mark> is what the object will look like. Some other examples of material
+            you could use:</h4>
+        <pre><code>&lt;script src="js/three.js"&gt; &lt;/script&gt;
+&lt;script&gt;
+    const Depth = new THREE.MeshDepthMaterial({color: Color});
+    const Normal = new THREE.MeshNormalMaterial({color: Color});
+    const Toon = new THREE.MeshToonMaterial({color: Color});
+    const Lambert = new THREE.MeshLambertMaterial({color: Color});
+&lt;/script&gt;</code></pre>
+        <h4><mark>THREE.Mesh()</mark> combines the shape and material to produce the object. We can then add the object to the scene using scene.add(yourObject).</h4>
+        <p>Now that our object has been created and added to the scene we can now render it onto the site:</p>
+        <pre><code>&lt;body&gt;
+    &lt;script src="js/three.js"&gt; &lt;/script&gt;
+    &lt;script&gt;
+        . . .
+        function animate() {
+        requestAnimationFrame( animate );
+        renderer.render( scene, camera );
+        }
+        animate();
+                            
+    &lt;/script&gt;
+&lt;/body&gt;
+        </code></pre>
+        <p>Now when you start your html it should look like this:</p>
+        <div id="divID"><canvas id="canvasID"></canvas>
+        </div>
+        <script src="js/three.js"></script>
+        <script>
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(45, window.innerWidth / 0.9 / window.innerHeight, 0.5, 1000);
+            const canvas = document.getElementById("canvasID");
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas });
+
+            renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+            document.getElementById('divID').appendChild(renderer.domElement);
+
+            const geometry = new THREE.BoxGeometry();
+            const material = new THREE.MeshBasicMaterial({ color: 'red' });
+            const cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+
+            camera.position.z = 5;
+            function animate() {
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+            }
+            animate();
+
+        </script>
+        <p>Hooray! We have visuals! Now we can animate the object to do what we want, in this example you'll make it
+            rotate.</p>
+        <p>In the animate function, select the object "cube" to rotate and the direction x or y to add and equal a
+            number:</p>
+        <pre><code>&lt;script src="js/three.js"&gt; &lt;/script&gt;
+&lt;script&gt;
+    . . .
+    function animate() {
+        requestAnimationFrame( animate );
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+        renderer.render( scene, camera );
+    }
+&lt;/script&gt;</code></pre>
+        <p>That's it! If everything is correct it should look like this:</p>
+        <div id="divID2"><canvas id="canvasID2"></canvas>
+        </div>
+        <script>
+            const scene2 = new THREE.Scene();
+            const camera2 = new THREE.PerspectiveCamera(45, window.innerWidth / 0.9 / window.innerHeight, 0.5, 1000);
+            const canvas2 = document.getElementById("canvasID2");
+            const renderer2 = new THREE.WebGLRenderer({ canvas: canvas2 });
+
+            renderer2.setSize(window.innerWidth / 2, window.innerHeight / 2);
+            document.getElementById('divID2').appendChild(renderer2.domElement);
+
+            const geometry2 = new THREE.BoxGeometry();
+            const material2 = new THREE.MeshBasicMaterial({ color: 'red' });
+            const cube2 = new THREE.Mesh(geometry2, material2);
+            scene2.add(cube2);
+
+            camera2.position.z = 5;
+            function animate2() {
+                requestAnimationFrame(animate2);
+                cube2.rotation.x += 0.01;
+                cube2.rotation.y += 0.01;
+                renderer2.render(scene2, camera2);
+            }
+            animate2();
+
+        </script>
+        <p>You can see that your cube doesn't quite look the same as this...</p>
+        <div id="divIDorg"><canvas id="canvasIDorg"></canvas>
+        </div>
+        <script>
+            const sceneorg = new THREE.Scene();
+            const cameraorg = new THREE.PerspectiveCamera(45, window.innerWidth / 0.9 / window.innerHeight, 0.5, 1000);
+            const canvasorg = document.getElementById("canvasIDorg");
+            const rendererorg = new THREE.WebGLRenderer({ canvas: canvasorg, alpha: true, antialias: true });
+    
+            rendererorg.setSize(window.innerWidth / 2, window.innerHeight / 2);
+            document.getElementById('divIDorg').appendChild(rendererorg.domElement);
+    
+            const geometryorg = new THREE.BoxGeometry();
+            const edgesorg = new THREE.EdgesGeometry(geometryorg);
+            const lineorg = new THREE.LineSegments(edgesorg, new THREE.LineBasicMaterial({ color: "black" }));
+            const materialorg = new THREE.MeshStandardMaterial({ color: 'red' });
+            const cubeorg = new THREE.Mesh(geometryorg, materialorg, lineorg);
+            cubeorg.castShadow = true;
+            cubeorg.receiveShadow = false;
+    
+            rendererorg.shadowMap.enabled = true;
+    
+            const lightorg = new THREE.SpotLight(0xff0000);
+            lightorg.position.set(1, 2.5, 4);
+            lightorg.castShadow = true;
+            lightorg.shadow.mapSize.width = 1000;
+            lightorg.shadow.mapSize.height = 1000;
+            lightorg.shadow.camera.near = 1;
+            lightorg.shadow.camera.far = 10;
+            lightorg.shadow.camera.fov = 30;
+    
+            const light2org = new THREE.SpotLight(0xff0000);
+            light2org.position.set(-2, -2.5, 0);
+            light2org.castShadow = true;
+            light2org.shadow.mapSize.width = 1000;
+            light2org.shadow.mapSize.height = 1000;
+            light2org.shadow.camera.near = 1;
+            light2org.shadow.camera.far = 10;
+            light2org.shadow.camera.fov = 30;
+            light2org.intensity = 0.5;
+    
+            sceneorg.add(lightorg);
+            sceneorg.add(light2org);
+            sceneorg.add(lineorg);
+            sceneorg.add(cubeorg);
+    
+            cameraorg.position.z = 2.24;
+            function animateorg() {
+                cubeorg.rotation.x += 0.008;
+                lineorg.rotation.x += 0.008;
+                cubeorg.rotation.y += 0.008;
+                lineorg.rotation.y += 0.008;
+                requestAnimationFrame(animateorg);
+                rendererorg.render(sceneorg, cameraorg);
+            }
+            animateorg();
+    
+        </script>
+        <p>Now that you have the basic cube down you're done square one to Three.js. Now you can edit the cube with lights, shadows and make it less "pixely" and go <a href="advanced.html">beyond square one!</a></p>
+    </div>
+</body>
+
+</html>
